@@ -5,6 +5,13 @@ Currently, my OPTRE missions do not follow a story like my SABRE Series does. I 
 
 Trivia: The Spartan-II program began in the year 2517.
 
+
+drdt
+
+
+
+
+
 All OPTRE Missions Feature:
 SP / COOP - (Varying Amounts of Players)
 Parameters for Multiplayer 
