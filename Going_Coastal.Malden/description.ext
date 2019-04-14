@@ -1,0 +1,206 @@
+author = "AlphaDog";
+onloadname = "OPTRE: Going Coastal";
+onLoadMission = "Secure a new flank for UNSC forces on Malden.";
+loadScreen =  "";
+overviewPicture = "";
+overviewText = "As an elite ODST team, secure Malden's west Highway-99.";
+
+enableDebugConsole = 2;
+
+doneKeys[] = {"MissionCompleted"};
+
+//--------------------------------------------------------------
+//------------------------AIS INJURY----------------------------
+//---------------------FHQ Task Tracker-------------------------
+//-----------------Alpha's Custom Functions---------------------
+class CfgFunctions 
+{
+	#include "AIS\cfgFunctions.hpp" // AIS Injury
+	#include "functions\fhq_tasktracker.hpp" // FHQ Task Tracker
+	#include "AlphaDog\alphadog_Funcs.hpp" // My personal functions
+};
+
+#include "AIS\Effects\BarDlg.hpp" // AIS Injury
+
+class Params
+{
+	class Time
+	{
+		title = "Mission time";
+		values[] = {0};
+		texts[] = {"Dawn","Morning","Afternoon","Dusk","Night"};
+		default = 1;
+	};
+	
+	class Weather
+	{
+		title = "Weather";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Cloudy","Overcast","Rainy","Stormy"};
+		default = 1;
+	};
+	
+	class Difficulty
+	{
+		title = "Difficulty (Affects AI skill)";
+		values[] = {0,1,2,3};
+		texts[] = {"Custom (Host's difficulty settings)","Normal","Heroic","Legendary"};
+		default = 0;
+	};
+	
+	class Revive
+	{
+		title = "Psycho's Revive";
+		values[] = {0,1};
+		texts[] = {"Off","On"};
+		default = 1;
+	};
+	
+	class Stealth
+	{
+		title = "Enable Stealth (Adjusts squad loadouts and AI behavior)";
+		values[] = {0,1};
+		texts[] = {"No", "Yes"};
+		default = 0;
+	};
+	
+	class Fatigue
+	{
+		title = "Enable Fatigue";
+		values[] = {0,1};
+		texts[] = {"No", "Yes"};
+		default = 1;
+	};
+	
+	class Music
+	{
+		title = "Ambient Music (Songs not synced between players on dedicated server)";
+		values[] = {0,1};
+		texts[] = {"Off", "On"};
+		default = 1;
+	};
+};
+
+class CfgMusic
+{
+	tracks[] = {Traffic_Jam,Lone_Wolf};
+	
+	class Traffic_Jam
+	{
+		name = "Traffic Jam";
+		sound[] = {"Music\T_Jam.ogg", 2, 1};
+	};
+	class Lone_Wolf
+	{
+		name = "Lone Wolf";
+		sound[] = {"Music\Lone_Wolf.ogg", 1.5, 1};
+	};
+};
+
+class CfgIdentities
+{
+	class Razer
+	{
+		name = "Razer";
+		nameSound = "Razer";
+		face = whiteHead_12;
+        glasses = None;
+		speaker = Male01ENG;
+		pitch = 1;
+	};
+	class Viper
+	{
+		name = "Viper";
+		nameSound = "Viper";
+		face = whiteHead_04;
+        glasses = None;
+		speaker = Male01ENGB;
+		pitch = 1;
+	};
+	class Snake
+	{
+		name = "Snake";
+		nameSound = "Snake";
+		face = whiteHead_05;
+        glasses = None;
+		speaker = Male04ENGB;
+		pitch = 1;
+	};
+	class Ghost
+	{
+		name = "Ghost";
+		nameSound = "Ghost";
+		face = AfricanHead_01;
+		glasses = None;
+		speaker = Male09ENG;
+		pitch = 1;
+	};
+	class Jester
+	{
+		name = "Jester";
+		nameSound = "Jester";
+		face = WhiteHead_19;
+		glasses = None;
+		speaker = Male02GRE;
+		pitch = 1;
+	};
+	class Frost
+	{
+		name = "Frost";
+		nameSound = "Frost";
+		face = WhiteHead_17;
+		glasses = None;
+		speaker = male01engb;
+		pitch = 1;
+	};
+	class Thanos
+	{
+		name = "Thanos";
+		nameSound = "Thanos";
+		face = WhiteHead_08;
+		glasses = None;
+		speaker = male03gre;
+		pitch = 1;
+	};
+	class Nomad
+	{
+		name = "Nomad";
+		nameSound = "Nomad";
+		face = WhiteHead_13;
+		glasses = None;
+		speaker = male12eng;
+		pitch = 1;
+	};
+};
+
+class CfgDebriefing
+{
+	class End_Win
+	{
+		title = "Mission Completed";
+		subtitle = "Malden's West Coast Secured";
+		description = "Thanks to efforts of Phoenix team, the Marine assault force was saved from annihilation. Also, because of the combined efforts of both Phoenix and the Marines, we have established a foothold on Malden.<br/><br/>If you liked/disliked this mission be sure to give it a rating, and/or tell me what you thought about it in the comments. Also, if you haven't played any of the my other missions, I suggest giving them a try. You can find a link to the my mission collection on this mission's Steam workshop page. Thank you for playing, and I hope you had fun!";
+		//pictureBackground = "images\loadImg.jpg";
+	};
+	class End_AllDown
+	{
+		title = "Mission Failed";
+		subtitle = "All units are down!";
+		description = "Phoenix Team was wiped out!";
+		//pictureBackground = "images\loadImg.jpg";
+	};
+	class End_OfficerDown
+	{
+		title = "Mission Failed";
+		subtitle = "The HVT was killed!";
+		description = "The URF officer was killed while in your captivity. If you choose to capture him, then you must ensure that he lives!";
+		//pictureBackground = "images\loadImg.jpg";
+	};
+	class End_PelCrewDead
+	{
+		title = "Mission Failed";
+		subtitle = "The Pelican crew was wiped out!";
+		description = "The crew of the downed Pelican was wiped out! You need to protect them from the enemy assault!";
+		//pictureBackground = "images\loadImg.jpg";
+	};
+};
