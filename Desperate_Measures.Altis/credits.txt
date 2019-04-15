@@ -1,0 +1,121 @@
+*********************************************************************************************************************************
+
+New Title:
+	
+OPTRE: Desperate Measures
+
+*********************************************************************************************************************************
+
+Author:
+
+	ALPHADOG789
+	
+	Contact: jakedg789@gmail.com
+
+*********************************************************************************************************************************
+
+Mission Version: 1.0
+	
+	v1.0 - Official Release
+	
+	v1.1 
+		- Attempted to fix the airman doesn't exist error by removing the two airmen by the parked Pelican at the insertion point
+		- Removed a random ODST unit that was on the map
+		- Added another rock for cover at the overwatch position
+	
+	v1.2
+		- Fixed dates being wrong if mission time was changed
+		- Fixed flashlights not being equipped by insurgents at night
+
+	v1.3
+		- Updated mission to work with OPTRE v0.17! - Thank you Chopper!
+		- Updated my functions to my newest versions.
+		- Updated the code in the intServer.sqf, intPLayerLocal.sqf, and the intro.sqf to match my current format.
+		- Updated the intro.sqf code to match with my current format.
+		- Updated Psycho's revive to the newest version - 24062017.
+		- Updated The insertion Falcon's flying (It's me flying through use of the unitPlay function) so it should be quicker and much more smooth.
+		- Updated Phoenix Team's load coefficient. They can now carry 15% more gear that the standard soldier.
+		-Updated Phoenix Team's damage resistance. Increased from 20% to 30%. 
+		- Updated the briefing: added, removed, and changed certain parts of it.
+		
+		- Added a new song: Overture by Martin O'Donnell
+		- Added new parameters for multiplayer: Enable Stamina & Enable Stealth.
+		- Added the difficulty parameter option of using your own difficulty. 
+		- Changed the default difficulty setting to match the host's difficulty settings.
+		- Changed the extraction vehicle from a Pelican to a Falcon
+		- Added some more ambiance details around the FOB
+		- Added custom police units at the FOB's checkpoint
+		- Added more cover on the hills near the overwatch position.
+		- Added/removed various object around the whole player area.
+		- Fixed the random patrols. They should be back to working now. Not sure if they were broken before.
+		- Fixed the extraction vehicle leaving the LZ before picking anyone up.
+		- Increased the size of the trigger area that makes the warthog at the factory attack.
+		- Adjusted Psycho's revive so that it works with all OPTRE medical supplies.
+		- Adjusted Phoenix Team's loadouts a bit.
+		- Increased the skills of Phoenix Team's AI
+		- Changed how HQ's messages are displayed to the players to match with my current format. Side chat is no longer used.
+		- Moved the position of the supply drop closer to the factory to compensate for the area of the drop zone.
+		
+	Hotfix:
+		- Removed extraneous file that caused problems with downloading the mission
+		- Adjusted the names of the ODST's in the multiplayer lobby
+		
+	v1.4
+		- Fixed the "Missing OPTRE_UNSC_Units_ODST addon" error.
+		- Adjusted Phoenix Team's loadouts to be compatible with the new OPTRE gear.
+		- Changed the "Overwatch" marker back to its original type
+	
+	v1.45
+		- Adjusted Phoenix team's loadouts
+		- Removed the sniper's rifle suppressor when stealth param is not activated
+		- Added NVGs to the snipers inventory
+		
+*********************************************************************************************************************************
+
+Released:
+
+	October 16, 2016
+
+*********************************************************************************************************************************
+
+Copyright Disclaimer:
+
+	© Jacob D. Gidley, 2016 
+	ALL RIGHTS RESERVED. 
+
+	No part of this mission or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author.
+	Commercial use and/or distribution of the mission is not allowed without express and prior written consent of the author. 
+	This mission is a work of fiction. Names, characters, places and incidents either are products of the author’s imagination or are used fictitiously. Any resemblance to actual events or locales or persons, living or dead, is entirely coincidental.
+	The author bears no responsibility for anything caused by downloading and/or playing this mission. In the case of any damage to your PC or your data, the author bears no responsibility for it.
+	You can download and/or play the mission at your own risk.
+	
+*********************************************************************************************************************************
+
+Music Credits:
+
+	DISCLAIMER: I did not create, nor was I involved in the creation of any of the songs used in this mission. All ownership rights are property of their respective owners.
+	
+	Note - The intro song is a combination of the two following songs:
+	* Skyline by Martin O'Donnell and Michael Salvatori
+	* The Menagerie Skyline by Martin O'Donnell and Michael Salvatori
+	
+	* Overture by Martin O'Donnell
+	* Lone Wolf by Martin O'Donnell and Michael Salvatori
+	
+**********************************************************************************************************************************
+
+Title Image Credits:
+
+	The backround of the title image is the coverart for Halo 3: ODST by Bungie
+	
+**********************************************************************************************************************************
+
+Thank you:
+
+	- The Operation Trebuchet Developers
+	- Chopper for patching the mission.sqm file to work with OPTRE v0.17
+	- The mission testers
+	- The BIS community
+	- Those of you who took the time to play my mission
+
+**********************************************************************************************************************************
