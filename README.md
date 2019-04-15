@@ -7,6 +7,10 @@ Trivia: The Spartan-II program began in the year 2517.
 
 All OPTRE Missions Feature:
 
-SP / COOP - (Varying Amounts of Players), Parameters for Multiplayer, FHQ Tasktracker by Varanon, AIS Revive by Psycho, Varying amounts of randomization
+	SP / COOP - (Varying Amounts of Players)
+	Parameters for Multiplayer 
+	FHQ Tasktracker by Varanon
+	AIS Revive by Psycho
+	Varying amounts of randomization
 
 Operation Trebuchet and CBA are required
