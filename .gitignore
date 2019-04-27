@@ -1,5 +1,5 @@
 # Ignore AIS folder
-/AIS/
+**/AIS
 
 # Ignore FHQ Tasktracker files
-/functions/
+**/functions
