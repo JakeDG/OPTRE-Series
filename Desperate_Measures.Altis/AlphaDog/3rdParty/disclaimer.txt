@@ -1,3 +1,0 @@
-Just to clarify, I am not the original author of the functions contained in this folder. These are just some functions that I used for convinience and to put time into other important things that my mission needed. Some functions may have been modified by me to suit my needs.
-
-ALL SOFTWARE RIGHTS GO TO THEIR RESPECTIVE AUTHORS!
