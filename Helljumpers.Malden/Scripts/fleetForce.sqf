@@ -18,7 +18,8 @@ _pel1Wp1 setWaypointType "SAD";
 _pel2Wp1 = (_pel2 select 2) addWaypoint [(getMarkerPos "pel2WpMkr"), 0]; // Pelican 2 waypoints
 _pel2Wp1 setWaypointType "SAD";
 
-// Create frigates
+// Create frigates -- Frigates removed in OPTRE v0.20
+/*
 _ship1 = "OPTRE_Frigate_Paris_Class" createVehicle [6752.89,12805.3,500];
 _ship1 setDir 0;
 sleep 1.0;
@@ -48,7 +49,7 @@ _moveDone1 = [_ship1] spawn
 		sleep 0.01;
 	};
 };  */
-
+/*
 _moveDone2 = [_ship2] spawn 
 {
 	_ship2 = _this select 0;
@@ -57,7 +58,7 @@ _moveDone2 = [_ship2] spawn
 		_ship2 setPosASL [(getPosASL _ship2) select 0, ((getPosATL _ship2) select 1) -1, 600]; 
 		sleep 0.01;
 	};
-};
+};*/
 sleep 50;
 
 // Make enemy AI surrender

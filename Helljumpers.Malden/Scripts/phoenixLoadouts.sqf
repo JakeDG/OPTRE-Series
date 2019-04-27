@@ -45,7 +45,7 @@ switch (_unitClass) do
 		_unit addWeapon "Rangefinder";
 		_unit addHandgunItem "OPTRE_M6G_Flashlight";
 		_unit addHandgunItem "OPTRE_M6G_Scope";
-		
+
 		comment "Add items";
 		_unit linkItem "ItemMap";
 		_unit linkItem "ItemCompass";
@@ -66,7 +66,7 @@ switch (_unitClass) do
 	//////// AT Loadout ////////
 	////////////////////////////////
 	
-	case "OPTRE_UNSC_ODST_Soldier_Rifleman_AT":
+	case "OPTRE_UNSC_ODST_Soldier_Rifleman_AT":		// REMOVED M41 Rocket launcher because of CTD bug in OPTRE v0.20
 	{	
 		[_unit,"Viper"] remoteExec ["setIdentity", [0,-2] select (isMultiplayer && isDedicated), _unit];
 
@@ -80,6 +80,7 @@ switch (_unitClass) do
 		for "_i" from 1 to 5 do {_unit addItemToBackpack "OPTRE_Biofoam";};
 		for "_i" from 1 to 3 do {_unit addItemToBackpack "OPTRE_M41_Twin_HEAT";};
 		for "_i" from 1 to 5 do {_unit addItemToBackpack "OPTRE_M2_Smoke";};
+		
 		_unit addItemToBackpack "OPTRE_M41_Twin_HEAP";
 		_unit addHeadgear "OPTRE_UNSC_CH252D_Helmet";
 
@@ -117,7 +118,7 @@ switch (_unitClass) do
 		
 		comment "Add containers";
 		_unit forceAddUniform "OPTRE_UNSC_ODST_Uniform";
-		for "_i" from 1 to 4 do {_unit addItemToUniform "OPTRE_60Rnd_5x23mm_Mag";};
+		for "_i" from 1 to 4 do {_unit addItemToUniform "OPTRE_16Rnd_127x40_Mag";};
 		_unit addVest "OPTRE_UNSC_M52D_Armor_Sniper";
 		for "_i" from 1 to 5 do {_unit addItemToVest "OPTRE_4Rnd_145x114_APFSDS_Mag";};
 		for "_i" from 1 to 3 do {_unit addItemToVest "OPTRE_M9_Frag";};
@@ -130,8 +131,11 @@ switch (_unitClass) do
 		comment "Add weapons";
 		_unit addWeapon "OPTRE_SRS99D_SC_LS";
 		_unit addPrimaryWeaponItem "OPTRE_SRS99_Scope";
-		_unit addWeapon "OPTRE_M7_Folded";
-		_unit addHandgunItem "OPTRE_M7_Sight";
+		_unit addWeapon "OPTRE_M6C";
+		//_unit addWeapon "OPTRE_M7_Folded";
+		//_unit addHandgunItem "OPTRE_M7_Sight";
+		_unit addHandgunItem "OPTRE_M6C_compensator";
+		_unit addHandgunItem "OPTRE_M6C_Scope";
 		_unit addWeapon "Rangefinder";
 
 		comment "Add items";
@@ -145,7 +149,7 @@ switch (_unitClass) do
 		if (isStealth) then
 		{
 			_unit addPrimaryWeaponItem "OPTRE_SRS99D_Suppressor";
-			_unit addHandgunItem "OPTRE_M7_silencer";
+			//_unit addHandgunItem "OPTRE_M7_silencer";
 		};
 	};
 	

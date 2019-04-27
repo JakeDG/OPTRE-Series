@@ -17,7 +17,7 @@ enableSentences false;
 		if (isStealth) then
 		{
 			_x setCombatMode "GREEN";
-			//_x setBehaviour "STEALTH"; // Set sabre team to stealth mode
+			//_x setBehaviour "STEALTH"; // Set phoenix team to stealth mode
 		};
 	};
 }forEach units phoenix;

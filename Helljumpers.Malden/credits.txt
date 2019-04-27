@@ -27,6 +27,23 @@ Mission Version: 1.0
 		- Stopped the intro Halo Theme from being interrupted during the drop on dedicated servers
 		- Updated to the latest version of Psycho's Revive (v3072018)
 		
+	v1.04
+		- Removed the M41 Rocket launcher from all AT units in order to avoid the CTD bug from OPTRE v0.20
+		- Removed orbital guns because they were removed from the OPTRE mod
+		- Removed the orbital gun terminals in the bunkers because they were removed from the OPTRE mod
+		- Removed the UNSC frigates that fly toward the base at the end of the mission because they were removed from the OPTRE mod
+		- Replaced the orbital guns with the Mk45 Hammer naval gun from the Arma 3 Encore Update
+		- Replaced the orbital gun terminals with RS Console Door terminals 
+		- Replaced Phoenix team's sniper's sidearm with a M6C Magnum because the M7 SMG does not exist anymore
+		- All AT riflemen have had their M41s replaced by PCMLs and RPG-42 for UNSC and Innie units respectively
+	
+	Hotfix
+		- Fixed some code in the loadout script
+		
+	v1.05
+		- Added back the M41 rocket launcher to all AT units including Phoenix team's AT rifleman after the patch for OPTRE
+		- Changed how the intro text was displayed
+		
 	
 *********************************************************************************************************************************
 
