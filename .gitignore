@@ -3,3 +3,6 @@
 
 # Ignore FHQ Tasktracker files
 **/functions
+
+# Ignore Music Folder
+**/Music
