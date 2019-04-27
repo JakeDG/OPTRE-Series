@@ -30,7 +30,7 @@ AIS_Core_lastCursorTarget = objNull;
                 _objActions pushBack _x;
 				
 				if (_formated != "") then {
-					_onObject setUserActionText [
+					_cursorTarget setUserActionText [
 						_action,
 						_text,
 						format [_formated, _text],

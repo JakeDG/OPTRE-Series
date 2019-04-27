@@ -52,7 +52,7 @@ if (_timeleft <= 0) exitWith {
 	{_x ppEffectEnable false; true} count ais_ppEff;
 	ppEffectDestroy ais_ppEff;
 	
-	[_unit] call AIS_Damage_fnc_goToDead;
+	[_unit, objNull] call AIS_Damage_fnc_goToDead;
 };
 
 if (AIS_SHOW_COUNTDOWN) then {

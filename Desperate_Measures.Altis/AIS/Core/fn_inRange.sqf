@@ -20,8 +20,8 @@ params [
 	["_distance", 15, [0]]
 ];
 
-_return = if (!isNull _object) then {
-	player distance2D _object < _distance
+_return = if (!isNull _object && {player distance2D _object < _distance}) then {
+	true
 } else {
 	false
 };

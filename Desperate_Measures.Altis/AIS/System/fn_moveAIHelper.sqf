@@ -37,11 +37,14 @@ _helper allowFleeing 0;
 
 if (currentCommand _helper != "MOVE") then {
 	_helper stop false;
-	_helper doMove (position _injured);
+	_helper doMove (position (vehicle _injured));
 };
 
+// if injured is in vehicle helper wont go that close --> have to increase the shortest distance
+_dist = if (!isNull objectParent _injured) then {(sizeOf (typeOf (vehicle _injured)) / 2) + 1} else {3};
+
 // start revive if close enough and ready for handling. Otherwise reset and repeat searching loop.
-if (_helper distance2D _injured < 3) exitWith {
+if (_helper distance2D (vehicle _injured) < _dist) exitWith {
 	if (isNull (_injured getVariable ["ais_hasHelper", objNull])) then {
 		_helper disableAI "AUTOCOMBAT";
 		[_helper, _injured] spawn AIS_System_fnc_ReviveAI;

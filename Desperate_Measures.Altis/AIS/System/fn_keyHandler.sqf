@@ -23,6 +23,18 @@ if (_keyDown isEqualTo 1) then {[] spawn AIS_System_fnc_disableRespawnButton};	/
 
 if (_keyDown isEqualTo 35) then {[player] call AIS_System_fnc_callHelp};	// key "H" --> call for Help
 
+
+// vehicle actions
+if (!(isNull objectParent player)) then {
+	//hint format ["%1", _keyDown];
+	{
+		if (_keyDown in (actionKeys _x)) exitWith {
+			_return = true;
+		};
+		Nil
+	} count ['CarForward','CarBack','HeliCyclicForward','HeliLeft','HeliRudderLeft','HeliRight','HeliRudderRight','AutoHover','CarFastForward','CarSlowForward','submarineForward','submarineBack','SwitchWeapon'];
+};
+
 {
 	if (_keyDown in (actionKeys _x)) exitWith {
 		if (AIS_NO_CHAT && {_keyDown in (actionKeys 'Chat')}) then {

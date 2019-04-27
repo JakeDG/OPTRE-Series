@@ -8,7 +8,7 @@ AIS_REVIVE_INIT_UNITS 		= 	"allPlayables"; // Auto-Init a group of units: "allPl
 												// Warning: I didn't recomment to use "allUnits" if you play with a lot of AI units! AIS is mainly created for players and/or their AI group.
 AIS_MEDICAL_EDUCATION 		= 	1; 				// Who can revive an unconscious unit? 0 == Everybody, 1 == Everybody with a First Aid Kit or Medkit, 2 == Only Medics (this affects both, AI and players!).
 AIS_REVIVE_GUARANTY 		= 	true;			// If true you will fall everytime in uncoscious mode, regardless how strong the impact of damage was.
-AIS_MEDEVAC_STATIONS		=	[];				// Add one or more objects and a radius to activate the medevac feature. If enabled revive is only at this place(s) possible. Empty array []  means feature is disabled.
+AIS_MEDEVAC_STATIONS		=	[];// Add one or more objects and a radius to activate the medevac feature. If enabled revive is only at this place(s) possible. Empty array means feature is disabled.
 												// Syntax: f.e.: [ [myMedevacVehicle, 15], [myMedicTent, 10] ]	--> make sure the variable name is avalible at gamestart. Otherwise call it later in a function.
 
 
@@ -22,9 +22,9 @@ AIS_STABILIZETIME 			= 	15;				// Basic stabilize time in seconds to stop the bl
 AIS_REVIVE_HEAL 			= 	false;			// If set to true the injured unit get completely healed after the revive. (casual gameplay without a medic)
 AIS_TOGGLE_RADIO 			= 	true; 			// If set to true, unconscious players cannot use his TFAR or ACRE radios.
 AIS_NO_CHAT 				= 	true; 			// If set to true, a injured player cannot use text chat during he is uncoscious.
-AIS_AI_HELP_RADIUS 			= 	0; 			// Number, Radius in metres. Units in this radius will help to revive if no group member is able to revive. Max value is 200 metres.
+AIS_AI_HELP_RADIUS 			= 	100; 			// Number, Radius in metres. Units in this radius will help to revive if no group member is able to revive. Max value is 200 metres.
 AIS_DISABLE_RESPAWN_BUTTON	=	30;				// Time in seconds while the respawn button is disabled (Esc Menu). Set to 0 to enable the respawn button everytime.
-
+AIS_DISABLE_FURTHER_DAMAGE	=	false;			// If set to true, an unconcious unit wont become further damage til death. If set to false, an unconcious unit can also die before bleedout timer is over. (f.e. trough near explosions)
 
 
 //__________________________________________________________________________________________________________________________________________________________________

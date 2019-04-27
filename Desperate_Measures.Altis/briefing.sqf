@@ -5,7 +5,7 @@
     
 	[["clearTask_1", "primTasks"], "Clear the <marker name='factoryMkr'>Traxus factory</marker> of insurrectionists.", "Retake Traxus Factory", "",getMarkerPos "factoryMkr", "assigned", "attack"],
 	
-	[["bombTask", "primTasks"], "Locate and diffuse of all insurrectionist explosive devices in the <marker name='factoryMkr'>Traxus factory</marker>.","Defuse Bombs","","","interact"]
+	[["bombTask", "primTasks"], "Locate and diffuse all of the insurrectionist explosive devices in the <marker name='factoryMkr'>Traxus factory</marker>.","Defuse Bombs","","","interact"]
 	
 ] call FHQ_fnc_ttAddTasks;
 

@@ -2,44 +2,51 @@
 
 if (isMultiplayer) then 
 {
-	500 cutText ["", "BLACK FADED", 999];
-	500 cutText ["Server Loading...", "BLACK FADED", 999];
+	100 cutText ["", "BLACK FADED", 999];
+	100 cutText ["Server Loading...", "BLACK FADED", 999];
 	0 fadeSound 0;
 	0 fadeMusic 0;
 	enableRadio false;
 	enableEnvironment false;	
 	clearRadio;
 	waitUntil {sleep 1; !isNil "serverLoaded"};
-	500 cutText ["Server Loaded", "BLACK FADED", 999];
+	100 cutText ["Server Loaded", "BLACK FADED", 999];
 }
 else
 {
-	500 cutText ["", "BLACK FADED", 999];
-	500 cutText ["Mission Loading...", "BLACK FADED", 999];
+	100 cutText ["", "BLACK FADED", 999];
+	100 cutText ["Mission Loading...", "BLACK FADED", 999];
 	0 fadeSound 0;
 	0 fadeMusic 0;
 	enableRadio false;
 	enableEnvironment false;	
 	clearRadio;
 	waitUntil {sleep 1; !isNil "serverLoaded"};
-	500 cutText ["Mission Loaded", "BLACK FADED", 999];
+	100 cutText ["Mission Loaded", "BLACK FADED", 999];
 };
 
 sleep 1.0;
-500 cutText ["", "BLACK FADED", 999];
+100 cutText ["", "BLACK FADED", 999];
 0 fadeMusic 1; // Fade music back in
 sleep 4.0;
 playMusic "Desperate"; // Play intro music
-["<t  size = '1.0'>A few hours after the attack...</t>", safeZoneX+0, safeZoneY+safeZoneH-0.9, 4, 4, 0, 600] spawn BIS_fnc_dynamicText;
-sleep 10.0;
 
-["<t size='1.0' color='#2B7ADA'>AlphaDog Presents...</t>", safeZoneX+0.1, safeZoneY+safeZoneH-0.9, 4, 4, 0, 600] spawn BIS_fnc_dynamicText;
-sleep 10.0;
+101 cutText ["<t size='3.0' font='EtelkaMonospacePro'>A few hours after the attack</t>", "BLACK", 3.0,true,true];
+sleep 6.0;
+101 cutFadeOut 1.0;
+sleep 4.0;
 
-["<t  size = '3.0' shadow = '0' color='#2B7ADA'>Desperate </t><t  size = '3.0' shadow = '0'>Measures</t>", safeZoneX+0.45,safeZoneY+safeZoneH-0.9, 8, 7, 0, 600] spawn BIS_fnc_dynamicText;
+101 cutText ["<t size='3.0' color='#469CED' font='EtelkaMonospacePro'>AlphaDog presents</t>", "BLACK", 2.0,true,true];
+sleep 6.0;
+101 cutFadeOut 1.0;
+sleep 3.5;
+
+101 cutText ["<t size='5.0' shadow='0' color='#469CED' font='EtelkaMonospacePro'>OPTRE:<br/></t><t size='5.0' shadow='0' font='EtelkaMonospacePro'>Desperate Measures</t>", "BLACK", 3.0,true,true];
 sleep 5.0;
+101 cutFadeOut 5.0;
+
 10 fadeSound 1; // Fade sound back in
-500 cutText ["", "BLACK IN", 15];
+100 cutText ["", "BLACK IN", 15];
 enableRadio true;
 enableEnvironment true;
 enableSentences true;

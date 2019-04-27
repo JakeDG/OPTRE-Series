@@ -22,6 +22,10 @@ if (!isServer) exitWith {};
 	["factoryMkr", "ColorRed", "X_fact"] call AD_fnc_crossMkr;
 	sleep 2.0;
 	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
+	
 	//[] remoteExec ["clearRadio",[0,-2] select (isMultiplayer && isDedicated)];
 	[] spawn 
 	{
@@ -66,6 +70,10 @@ if (!isServer) exitWith {};
 {
 	waitUntil {sleep 1.0; !isNil "secFtryCleared"};
 	["clearTask_2", "succeeded"] call FHQ_fnc_ttSetTaskState;
+	
+	// Save the game in singleplayer
+	if (!isMultiplayer && savingEnabled) then {saveGame;};
+	sleep 1.0;
 };
 
 // Extract task

@@ -12,11 +12,11 @@
 
 private _who_can_revive = switch (AIS_MEDICAL_EDUCATION) do {
 	case (0) : {"Everyone can revive"};
-	case (1) : {"Anyone with a Biofoam Canister, Medigel or Medkit/Medical Kit"};
+	case (1) : {"Everybody with a First Aid Kit or Medkit"};
 	case (2) : {"Only medics can revive"};
 };
-private _revive_guaranty = if (AIS_REVIVE_GUARANTY) then {"You are protected from insta-death"} else {"Heavy damage can cause in insta-death"};
-private _revive_heal = if (AIS_REVIVE_HEAL) then {"Completely healed"} else {"Separate healing action needed if not revived by a medic"};
+private _revive_guaranty = if (AIS_REVIVE_GUARANTY) then {"You are protected from insta-death"} else {"Heavy damage can end in insta-death"};
+private _revive_heal = if (AIS_REVIVE_HEAL) then {"completely healed"} else {"Separate healing action needed if not revived by a medic"};
 
 _subject = player createDiarySubject ["ais_settings", "AIS Settings"];
 _log_briefing = player createDiaryRecord ["ais_settings", ["Medical Education", "
@@ -31,7 +31,7 @@ _log_briefing = player createDiaryRecord ["ais_settings", ["Healing Status", "
 _subject = player createDiarySubject ["ais", "First Aid System"];
 _log_briefing = player createDiaryRecord ["ais", ["About and Credits", "
 <font face='PuristaMedium' size=18 color='#ffffff'>Made by: </font><font face='PuristaMedium' size=25 color='#8E8E8E'>Psychobastard</font><br/>
-<font face='PuristaMedium' size=18 color='#ffffff'>Version: </font><font face='PuristaMedium' size=20 color='#ffffff'>21022016</font><br/><br/>
+<font face='PuristaMedium' size=18 color='#ffffff'>Version: </font><font face='PuristaMedium' size=20 color='#ffffff'>3072018</font><br/><br/>
 
 <font face='PuristaMedium' size=30 color='#014EE3'>Credits</font><br/>
 - <font face='PuristaMedium' size=18 color='#8E8E8E'>BonInf*</font> for the first multiplayer compatible version (Arma 2)<br/>
@@ -52,7 +52,7 @@ _log_briefing = player createDiaryRecord ["ais", ["Instructions", "
 <font face='PuristaMedium' size=22 color='#014EE3'>How to give first aid:</font><br/>
 - Move close to an unconscious unit and select <font face='PuristaMedium' size=15 color='#8E8E8E'>'Stabilize'</font> to stop heavy bleeding. This will prevent the injured unit from bleedout. (death)<br/><br/>
 - Move close to an unconscious unit and select <font face='PuristaMedium' size=15 color='#8E8E8E'>'First Aid'</font> to revive the unit.<br/><br/>
-- If it is needed and you want to <font face='PuristaMedium' size=15 color='#8E8E8E'>'Abort'</font> a revive process, simply press 'ESC' Button.<br/><br/>
+- If it is needed and you want to <font face='PuristaMedium' size=15 color='#8E8E8E'>'Abbort'</font> a revive process, simply press 'ESC' Button.<br/><br/>
 - Move close to an unconscious unit and select <font face='PuristaMedium' size=15 color='#8E8E8E'>'Drag'</font> to drag the body out of the line of fire (Mousewheel menu).<br/><br/>
 - While you are dragging a unit, you can select <font face='PuristaMedium' size=15 color='#8E8E8E'>'Carry'</font> to carry the unit on your shoulders (better to cover long distances).<br/><br/>
 - In some cases you need medical equipment (First Aid Kit or Medkit) or must be a medic to start the 'First aid' action.

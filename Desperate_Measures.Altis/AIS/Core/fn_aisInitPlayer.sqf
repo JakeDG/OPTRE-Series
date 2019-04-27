@@ -1,7 +1,7 @@
 ﻿// this script run only by the player!
 private _player = _this;
 if (_player != player) exitWith {["%1 --- exit aisInitPlayer cause it's not the local player itself %2", diag_ticktime, _player] call BIS_fnc_logFormat};
-if (isClass (configFile >> "CfgPatches" >> "ace_main")) exitWith {["AIS: AIS shutdown itself cause ACE mod was detected. ACE and AIS cant work at the same time."] call BIS_fnc_logFormat};
+if (isClass (configFile >> "CfgPatches" >> "ace_medical")) exitWith {["AIS: AIS shutdown itself cause ACE medical system is also running. ACE medical and AIS cant work at the same time."] call BIS_fnc_logFormat};
 
 if (_player getVariable ["AIS_noReviveInit", false]) exitWith {};
 
@@ -12,11 +12,10 @@ if (local _player) then {
 	[_player] spawn {
 		_player = _this select 0;
 		waitUntil {!isNil {_player getVariable "BIS_fnc_feedback_hitArrayHandler"} || {time > 0}};
-		_player removeAllEventHandlers "handleDamage";
+		_player removeAllEventHandlers "handleDamage";	// make sure nothing else working byside
 		//["%1 --- add damageEH to player %2", diag_ticktime, _player] call BIS_fnc_logFormat;
 		_player addEventHandler ["HandleDamage", {_this call AIS_Damage_fnc_handleDamage}];
 		
-		_player removeAllEventHandlers "Killed";
 		_player addEventHandler ["Killed", {_this call AIS_System_fnc_killed}];
 		
 		_player addEventHandler ["Respawn", {_this call AIS_System_fnc_respawn}];
