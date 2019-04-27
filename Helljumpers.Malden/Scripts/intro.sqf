@@ -30,14 +30,20 @@ sleep 1.0;
 sleep 4.0;
 
 playMusic "Halo_Theme"; // Play intro music
-["<t  size = '1.0'>Feet first into hell...</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.85, 5, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 13.0;
 
-["<t size='1.0' color='#469CED'>AlphaDog Presents...</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.85, 4, 4, 0, 200] spawn BIS_fnc_dynamicText;
-sleep 10.0;
+101 cutText ["<t size='3.0' font='EtelkaMonospacePro'>Feet first into hell</t>", "BLACK", 3.0,true,true];
+sleep 9.0;
+101 cutFadeOut 1.0;
+sleep 4.5;
 
-["<t  size = '3.0' shadow = '0' color='#469CED'>OPTRE: </t><t  size = '3.0' shadow = '0'>Helljumpers</t>", safeZoneX+0.45,safeZoneY+safeZoneH-0.9, 8, 7, 0, 200] spawn BIS_fnc_dynamicText;
+101 cutText ["<t size='3.0' color='#469CED' font='EtelkaMonospacePro'>AlphaDog presents</t>", "BLACK", 2.0,true,true];
 sleep 7.0;
+101 cutFadeOut 1.0;
+sleep 3.0;
+
+101 cutText ["<t size='5.0' shadow='0' color='#469CED' font='EtelkaMonospacePro'>OPTRE:<br/></t><t size='5.0' shadow='0' font='EtelkaMonospacePro'>Helljumpers</t>", "BLACK", 3.0,true,true];
+sleep 7.0;
+101 cutFadeOut 5.0;
 
 100 cutText ["", "BLACK IN", 15];
 15 fadeSound 1; // Fade sound back in
