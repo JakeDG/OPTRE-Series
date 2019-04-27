@@ -25,7 +25,7 @@ if (!isNil "_marker") then {
 		[{diag_tickTime > (_this select 1)}, {[_this select 0] call AIS_Effects_fnc_posUpdateInjuredMarker}, [_unit, _acc_time]] call AIS_Core_fnc_waitUntilAndExecute;
 	};
 	
-	if (!alive _unit) then {
+	if (!alive _unit || {isNull _unit}) then {
 		_unit call AIS_Effects_fnc_removeInjuredMarker;
 	};
 };

@@ -22,7 +22,7 @@ _behaviour = behaviour _healer;
 
 // move the wounded out of the vehicle
 if (!isNull objectParent _injured) exitWith {
-	[_injured, vehicle _injured, 0] call AIS_System_fnc_moveCargoRemote;
+	[[_injured, vehicle _injured, 0], {_this call AIS_System_fnc_moveCargoRemote}] remoteExec ["call"];
 	_acc_time = diag_tickTime + 1.382;
 	[{diag_tickTime > (_this select 2)}, {[_this select 0, _this select 1] spawn AIS_System_fnc_ReviveAI}, [_healer, _injured, _acc_time]] call AIS_Core_fnc_waitUntilAndExecute;
 };
@@ -40,7 +40,6 @@ _healer setPos (getPos _injured);	// avoid to move the injured a few metres away
 
 _healer stop true;
 {_healer disableAI _x; true} count ["MOVE","TARGET","AUTOTARGET","ANIM","AUTOCOMBAT"];
-
 
 _offset = [0,0,0]; _dir = 0;
 _relpos = _healer worldToModel position _injured;

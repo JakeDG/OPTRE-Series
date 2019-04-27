@@ -10,7 +10,7 @@
 	-
  */
 
-params ["_unit"];
+params ["_unit", ["_killer",objNull,[]]];
 
 if (!alive _unit) exitWith {};
 if (_unit getVariable ["AIS_UnitIsDead", false]) exitWith {};
@@ -24,6 +24,15 @@ if (!(isNull (_unit getVariable ["ais_DragDrop_Player", objNull]))) then {
 };
 
 _unit call AIS_System_fnc_restoreFaks;
+
+// kill message and score point
+if (!isNull _killer && {isPlayer _killer}) then {
+	[_killer, 1] remoteExec ["addScore", 2];
+	if (isPlayer _unit) then {
+		_text = format ["%1 was killed by %2", name _unit, name _source];
+		[_text] remoteExec ["systemChat", 0];
+	};
+};
 
 // dead... if some issues with the deadcam (shown killer) give the dead a deleay of 1 frame --> need testing
 _unit setDamage 1;

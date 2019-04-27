@@ -63,6 +63,7 @@ private _duration = [_healer, _injured] call AIS_System_fnc_calculateReviveTime;
 		detach _injured;
 
 		_healer playAction "medicStop";
+		[_healer, 1] remoteExec ["addScore", 2]; 	// +1 per revive
 
 		_injured setVariable ["ais_hasHelper", ObjNull, true];
 		call AIS_Effects_fnc_garbage;

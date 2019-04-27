@@ -4,7 +4,7 @@ if (!isNull (findDisplay 49)) exitWith {};		// Esc Menu
 
 // remove the meh if client left the mission
 if (getClientStateNumber in [11,12]) exitWith {
-	removeMissionEventHandler ["draw3D", ais_3d];
+	removeMissionEventHandler ["draw3D", AIS_Core_3DEHId];
 };
 
 private _targets = [];
@@ -14,15 +14,6 @@ _targets = player nearEntities ["CAManBase", _recognize_distance];
 if (count _targets < 1) exitWith {};
 
 private _playerPos = positionCameraToWorld [0, 0, 0];
-
-/*	--> Freund/Feinderkennung sonst zu einfach
-_cursorTarget = cursorTarget;
-if (_cursorTarget isKindOf "CAManBase") then {
-	if (!(_cursorTarget in _targets)) then {
-		_targets pushBack _cursorTarget;
-	};
-};
-*/
 
 if (!surfaceIsWater _playerPos) then {
     _playerPos = ATLtoASL _playerPos;

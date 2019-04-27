@@ -69,6 +69,21 @@ Mission Version: 1.0
 		- Adjusted Phoenix team's loadouts
 		- Removed the sniper's rifle suppressor when stealth param is not activated
 		- Added NVGs to the snipers inventory
+	
+	v1.5
+		- Added dynamic simulation to improve performance
+		- Updated to the latest version of Psycho's Revive (v3072018)
+		- Removed the M41 Rocket launcher from all AT units in order to avoid the CTD bug from OPTRE v0.20
+		- Removed the UNSC frigate at the beginning because it was removed from the OPTRE mod
+		- Replaced Phoenix team's sniper's sidearm with a M6C Magnum because the M7 SMG does not exist anymore
+		- All AT riflemen have had their M41s replaced by PCMLs and RPG-42 for UNSC and Innie units respectively
+		- Added autosaves for singleplayer
+		- Centered intro text
+		- Removed UNSC Final Dawn marker 
+	
+	v1.51
+		- Added back the M41 rocket launcher to all AT units including Phoenix team's AT rifleman after the patch for OPTRE
+		- Changed how the intro text was displayed
 		
 *********************************************************************************************************************************
 

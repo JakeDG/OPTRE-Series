@@ -69,5 +69,5 @@ if (AIS_SHOW_DIARYINFO) then {
 
 true spawn {
 	waitUntil {time > 0};
-	ais_3d = addMissionEventHandler ["Draw3D", {_this call AIS_Effects_fnc_draw3D}];
+	AIS_Core_3DEHId = addMissionEventHandler ["Draw3D", {_this call AIS_Effects_fnc_draw3D}];
 };

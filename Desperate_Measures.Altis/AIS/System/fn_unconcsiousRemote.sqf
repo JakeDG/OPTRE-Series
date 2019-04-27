@@ -35,7 +35,7 @@ if (_is_unoncsious) then {
 			[side _unit,"HQ"] sideChat format ["%1 is down and needs help at %2!",name _unit, mapGridPosition _unit];
 		};
 		
-		if (AIS_SHOW_UNC_MARKERS) then {
+		if (AIS_SHOW_UNC_MARKERS && {side _unit isEqualTo playerSide}) then {
 			_unit call AIS_Effects_fnc_injuredMarker;
 		};
 	};

@@ -50,7 +50,7 @@ private _duration = [_healer, _injured] call AIS_System_fnc_calculateStabilizeTi
 
 
 [
-    "Stabilizing the Injured", 
+    "Stabilize the Injured", 
     _duration,
     {
 		params ["_injured", "_healer"];

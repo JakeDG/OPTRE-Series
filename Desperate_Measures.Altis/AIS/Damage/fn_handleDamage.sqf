@@ -37,6 +37,8 @@ params [
 // remote Units
 if !(local _unit) exitWith {false};
 if (_damage == 0) exitWith {[_unit, _hitPartIndex] call AIS_Damage_fnc_exitDamageHandler};
+// forbite forther damage when unit is already unconcious
+if (AIS_DISABLE_FURTHER_DAMAGE && {_unit getVariable ["ais_unconscious", false]}) exitWith {0.89};
 // dead unit
 if (_unit getVariable ["AIS_UnitIsDead", false]) exitWith {0.89};
 // unknown part selection
@@ -111,7 +113,7 @@ if !(AIS_REVIVE_GUARANTY) then {
 	// vehicle blow-up is everytime critical. Set to dead...
 	if (!(isNull objectParent _unit)) then {
 		if (damage (vehicle _unit) >= 1) exitWith {
-			[_unit] call AIS_Damage_fnc_goToDead;
+			[_unit,_source] call AIS_Damage_fnc_goToDead;
 		};
 	};
 	// critical hit trough explos?
@@ -128,7 +130,7 @@ if !(AIS_REVIVE_GUARANTY) then {
 	};
 	
 	// unit is instant death - no revive chance
-	if (_critical_hit) exitWith {[_unit] call AIS_Damage_fnc_goToDead};
+	if (_critical_hit) exitWith {[_unit,_source] call AIS_Damage_fnc_goToDead};
 };
 
 // if a stabilized unit become new damage they won't be longer in the stbilized state
@@ -136,7 +138,7 @@ _unit setVariable ["ais_stabilized", false, true];
 
 // unit can die if they get to mutch new damage in unconscious mode
 if ((diag_tickTime > _unit getVariable ["ais_protector_delay", 0]) && {_unit getVariable ["ais_unconscious", false]}) exitWith {
-	if (_damage > 0.9) then {[_unit] call AIS_Damage_fnc_goToDead};
+	if (_damage > 0.9) then {[_unit,_source] call AIS_Damage_fnc_goToDead};
 	_damage = _damage min 0.89;
 	_damage
 };
@@ -164,6 +166,19 @@ if (_set_unconscious && {!(_unit getVariable ["ais_unconscious", false])}) then 
 	[{[(_this select 0)] call AIS_System_fnc_setUnconscious}, [_unit]] call AIS_Core_fnc_onNextFrame;
 	// need this delay to prevent new damage for some seconds after the unit go unconscious. after the delay it is possible to kill the unit when they get to much new damage.
 	_unit setVariable ["ais_protector_delay", (diag_tickTime + 6)];
+	
+	// kill message and score point
+	if (!isNull _source && {isPlayer _source}) then {
+		if (side _source != side _unit) then {
+			[_source, 1] remoteExec ["addScore", 2];
+		} else {
+			[_source, -1] remoteExec ["addScore", 2];
+		};
+		if (isPlayer _unit) then {
+			_text = format ["%1 was seriously wounded by %2", name _unit, name _source];
+			[_text] remoteExec ["systemChat", 0];
+		};
+	};
 };
 
 _damage = _damage min 0.89;

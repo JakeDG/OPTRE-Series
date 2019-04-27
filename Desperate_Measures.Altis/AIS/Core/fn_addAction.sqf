@@ -27,11 +27,11 @@
 
 params ["_text", "_onObject", "_distance", "_condition", "_callback", ["_args", []], ["_formated", "", [""]]];
 
-/*
+
 if (_distance > 0) then {
     _condition = format ["([cursorTarget, %1] call AIS_Core_fnc_inRange) && {%2}", _distance, _condition];
 };
-*/
+
 
 if (_onObject isEqualType objNull && {_onObject isEqualTo AIS_Core_realPlayer}) exitWith {
     private _action = _onObject addAction [_text, _callback, _args, 1.5, false, true, "", _condition, _distance];
