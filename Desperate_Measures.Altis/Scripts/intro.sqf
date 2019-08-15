@@ -66,3 +66,20 @@ _text =
 introDone = true;
 publicVariable "introDone";
 
+if (("Music" call BIS_fnc_getParamValue) == 1) then
+{
+	waitUntil{sleep 1.0; !isNil "dedicatedMusic"};
+	if (dedicatedMusic) then // Only works on dedicated servers
+	{
+		ehID = addMusicEventHandler [
+									"MusicStop", 
+									{
+										[] spawn
+										{
+											sleep 5.0;
+											playMusic (selectRandom trackList);;
+										};
+									}
+								];
+	};
+};

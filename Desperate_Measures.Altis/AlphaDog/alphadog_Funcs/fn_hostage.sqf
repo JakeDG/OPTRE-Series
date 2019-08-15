@@ -25,11 +25,11 @@ if (!(_unit isKindOf "man")) exitwith {["ERROR: %1 must be type of man", _unit] 
 // Set custom name in text
 if (_text == "") then 
 {
-	_actionText = "release <t color='#D22E2E'>Captive</t>";
+	_actionText = "Release <t color='#469CED'>Captive</t>";
 }
 else
 {
-	_actionText = format ["release <t color='#D22E2E'>%1</t>", _text];
+	_actionText = format ["Release <t color='#469CED'>%1</t>", _text];
 };
 
 // Switch to captured animation

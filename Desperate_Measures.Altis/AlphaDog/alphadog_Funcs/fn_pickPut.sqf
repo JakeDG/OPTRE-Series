@@ -23,7 +23,10 @@ if (isNull _obj) exitwith {["ERROR: Oject does not exist!"] call BIS_fnc_error; 
 if (_text == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_error; false};
 
 // Set custom name in text
-_actionText = format ["<t color='#D22E2E'>%1</t>", _text];
+_actionText = format ["<t color='#469CED'>%1</t>", _text];
+
+// Set object variable to false
+_obj setVariable ["isPickPut", false, true];
 
 // Add action to object for all players and JIPs
 [_obj, 
@@ -57,7 +60,7 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _text];
 				_caller playMove _anim;
 				sleep 1.25;
 
-				// Set object variable to false
+				// Set object variable to true
 				_target setVariable ["isPickPut", true, true];
 			};
 		},

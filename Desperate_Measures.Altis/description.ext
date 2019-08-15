@@ -30,8 +30,13 @@ class Params
 		default = 2;
 	};
 	
-	#define WEATHER_DEFAULT		25
-	#include "\a3\functions_f\Params\paramWeather.hpp"
+	class Weather
+	{
+		title = "Weather";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Clear","Cloudy","Overcast","Rainy","Stormy"};
+		default = 1;
+	};
 	
 	class Difficulty
 	{
@@ -64,6 +69,20 @@ class Params
 		texts[] = {"No", "Yes"};
 		default = 1;
 	};
+	
+	class Music
+	{
+		title = "Ambient Music (Songs not synced between players on dedicated server)";
+		values[] = {0,1};
+		texts[] = {"Off", "On"};
+		default = 1;
+	};
+};
+
+class CfgSounds
+{
+	sounds[] = {};
+	#include "AlphaDog\sounds.hpp"
 };
 
 class CfgMusic
@@ -144,7 +163,7 @@ class CfgDebriefing
 	{
 		title = "Mission Completed";
 		subtitle = "Insurgents Neutralized";
-		description = "Thanks to Phoenix team the insurgent crisis has been dealt with. However, this may be only the beginning of something far worse.<br/><br/>If you liked/disliked this mission be sure to give it a rating, and/or tell me what you thought about it in the comments. Also, if you haven't played any of the my other missions, I suggest giving them a try. You can find a link to the my mission collection on this mission's Steam workshop page. Thank you for playing, and I hope you had fun!";
+		description = "Thanks to Phoenix Team the insurgent crisis has been dealt with. However, this may be only the beginning of something far worse.<br/><br/>If you liked/disliked this mission be sure to give it a rating, and/or tell me what you thought about it in the comments. Also, if you haven't played any of the my other missions, I suggest giving them a try. You can find a link to the my mission collection on this mission's Steam workshop page. Thank you for playing, and I hope you had fun!";
 		pictureBackground = "images\loadImg.jpg";
 	};
 	class End_ExtractDead

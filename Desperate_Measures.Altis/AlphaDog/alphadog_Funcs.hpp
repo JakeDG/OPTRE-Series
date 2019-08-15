@@ -27,6 +27,7 @@ class alphadog_Functions // Functions I wrote
 			class pickPut {};
 			class pickPutHold {};
 			class soundAmp {};
+			class subtitle {};
 			class terminalAction {};
 			class terminalActionHold {};
 			class thanks {};
@@ -35,7 +36,7 @@ class alphadog_Functions // Functions I wrote
 
 class thirdParty_Functions	// Functions not written by me, but that I modified!!!
 	{
-		tag = "BIS"
+		tag = "TP";
 		
 		class thirdParty 
 		{

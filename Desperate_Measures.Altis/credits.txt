@@ -85,6 +85,12 @@ Mission Version: 1.0
 		- Added back the M41 rocket launcher to all AT units including Phoenix team's AT rifleman after the patch for OPTRE
 		- Changed how the intro text was displayed
 		
+	v1.6
+		- Fixed issues caused by the Contact update involving my custom functions triggering objectives to be completed
+		- Updated functions library
+		- Updated old subtitles to use new subtitle function
+		- Added images for the objectives
+		
 *********************************************************************************************************************************
 
 Released:

@@ -3,7 +3,7 @@
     Author: AlphaDog
     
     Description:
-	Moves a unit to a safe position near it's group leader. If the leader is in a vehicle with an open position then the unit will be moved inside the leader's vehicle. If the unit is the leader of the squad then the function returns an empty array.
+	Moves a unit to a safe position near its group leader. If the leader is in a vehicle with an open position then the unit will be moved inside the leader's vehicle. If the unit is the leader of the squad then the function returns an empty array.
    
     Parameter(s):
     0: Object  - The unit that is going to be moved to it's leader

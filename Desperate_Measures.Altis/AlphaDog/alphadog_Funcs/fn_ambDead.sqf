@@ -9,14 +9,15 @@
 	0: Object - The unit that becomes an ambient dead body.
 	1: String - The animation that the dead body plays. 
 	2: (Optional) Boolean - Clear units inventory except clothes, helmets, etc.
+	3: (Optional) Boolean - Spawn blood on units position - Default: false
    
    Example:
-   [this, "LAY_SIDE_1", true] call AD_fnc_ambDead;
+   [this, "LAY_SIDE_1", true, false] call AD_fnc_ambDead;
 */
 
-private["_unit", "_anim", "_remGear", "_inval"];
+private["_unit", "_anim", "_remGear", "_blood", "_inval"];
 
-params [["_unit", objNull, [objNull], 1], ["_anim", "", [""], 1], ["_remGear", false, [true], [0,1]]];
+params [["_unit", objNull, [objNull], 1], ["_anim", "", [""], 1], ["_remGear", false, [true], [0,1]], ["_blood", false, [true], [0,1]]];
 
 // EXAMPLE: [this, "LAY_SIDE_1", true] call AD_fnc_ambDead;
 
@@ -127,4 +128,9 @@ switch (toUpper(_anim)) do
 
 _unit setDamage 1;
 
+if (_blood) then
+{
+	_bloodSpot = createSimpleObject ["a3\characters_f\blood_splash.p3d", getPosWorld _unit]; 
+	_bloodSpot setDir (random 360);
+};
 true 

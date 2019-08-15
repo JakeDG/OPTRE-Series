@@ -11,7 +11,7 @@ execVM "Scripts\bombActions.sqf";
 /******************** REMOTE EXECS ***********************/
 // Add action to ammoboxes
 {
-	[_x, [ "<t color='#2B7ADA'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 3.5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), _x];
+	[_x, [ "<t color='#2B7ADA'>Open Virtual Arsenal</t>",{ ["Open",true] spawn BIS_fnc_arsenal; },[],10,true,true,"","(_target distance _this) < 5"] ] remoteExec [ "addAction", [0,-2] select (isMultiplayer && isDedicated), _x];
 } forEach [baseArsenal_1,baseArsenal_2]; 
 
 //[cmd, ["Command"]] remoteExec ["setGroupId", [0,-2] select (isMultiplayer && isDedicated), true];
@@ -37,6 +37,32 @@ switch (_paramTime) do
 	case 3: // Night
 	{
 		setDate [2517, 5, 5, 19, 30];
+	};
+};
+
+// Set weather
+_paramWeather = "Weather" call BIS_fnc_getParamValue;
+switch (_paramWeather) do 
+{
+	case 0: // Clear
+	{
+		[0] call BIS_fnc_setOvercast;
+	};
+	case 1: // Cloudy
+	{
+		[0.25] call BIS_fnc_setOvercast;
+	};
+	case 2: // Overcast
+	{
+		[0.5] call BIS_fnc_setOvercast;
+	};
+	case 3: // Rainy
+	{
+		[0.75] call BIS_fnc_setOvercast;
+	};
+	case 4: // Stormy
+	{
+		[1] call BIS_fnc_setOvercast;
 	};
 };
 
@@ -114,6 +140,75 @@ else
 	publicVariable "isStealth";
 };
 
+// Set ambient music
+_paramMusic = "Music" call BIS_fnc_getParamValue;
+if (_paramMusic == 1) then 
+{
+	trackList = [
+			"LeadTrack03_F_Tank",
+			"AmbientTrack01_F_Tank",
+			"LeadTrack02_F_Tank",
+			"AmbientTrack01_F_Orange",
+			"LeadTrack01_F_Tacops",
+			"LeadTrack02_F_Tacops",
+			"LeadTrack03_F_Tacops",
+			"AmbientTrack01a_F_Tacops",
+			"AmbientTrack01b_F_Tacops",
+			"AmbientTrack02a_F_Tacops",
+			"AmbientTrack02b_F_Tacops",
+			"AmbientTrack03a_F_Tacops",
+			"AmbientTrack03b_F_Tacops",
+			"AmbientTrack04a_F_Tacops",
+			"AmbientTrack04b_F_Tacops",
+			"OPTRE_Music_AMarchThroughTheWoods",
+			"OPTRE_Music_BandofBravery",
+			"OPTRE_Music_BootsOnTheDeck",
+			"OPTRE_Music_CommanderOnDeck",
+			"OPTRE_Music_CovenantDance",
+			"OPTRE_Music_DrumRun",
+			"OPTRE_Music_Engaged",
+			"OPTRE_Music_Firefight",
+			"OPTRE_Music_Helljumpers",
+			"OPTRE_Music_Halo",
+			"OPTRE_Music_InnieDance",
+			"OPTRE_Music_LongHaul",
+			"OPTRE_Music_Shotgun",
+			"OPTRE_Music_Introductions",
+			"OPTRE_Music_ScorpionMix",
+			"OPTRE_Music_NothingButSnipers",
+			"OPTRE_Music_InnieTheme",
+			"Overture"
+		];
+
+	publicVariable "trackList";
+	
+	if (!isDedicated) then // All music is synced over the network through player host
+	{
+		ehID = addMusicEventHandler [
+										"MusicStop", 
+										{
+											[] spawn
+											{
+												sleep 5.0;
+												(selectRandom trackList) remoteExec ["playMusic",0];
+											};
+										}
+									];
+		dedicatedMusic = false;
+		publicVariable "dedicatedMusic";
+	}
+	else
+	{
+		dedicatedMusic = true;
+		publicVariable "dedicatedMusic";
+	};
+}
+else
+{
+	dedicatedMusic = false;
+	publicVariable "dedicatedMusic";
+};
+
 /******************** OTHER SERVER STUFF ***********************/
 if (isMultiplayer || isDedicated) then
 {
@@ -144,13 +239,16 @@ else
 	};
 };
 
-// Set Police loadouts
+[] spawn 
 {
-	if (faction _x == "IND_F") then // Unit is part of the Police (AAF)
+	// Set Police loadouts
 	{
-		[_x] execVM "Scripts\policeLoadouts.sqf";
-	};
-} forEach allUnits;
+		if (faction _x == "IND_F") then // Unit is part of the Police (AAF)
+		{
+			[_x] execVM "Scripts\policeLoadouts.sqf";
+		};
+	} forEach allUnits;	
+};
 
 // Set Phoenix team's AI skill
 {
@@ -163,6 +261,18 @@ else
 	_x setSkill ["commanding", 0.95];
 	_x setSkill ["general", 0.95];
 } forEach units phoenix;
+
+// Randomize fuel levels for all cars except the starting offroad at the insertion
+[] spawn 
+{
+	_startVehs = [startVeh_1,startVeh_2,startVeh_3,startVeh_4];
+	{
+		if (_x isKindOf "Car" && !(_x in _startVehs)) then 
+		{
+			_x setFuel (random [0.25, 0.65, 0.95]);
+		};
+	} forEach vehicles;
+};
 
 // Constant check if everyone is down
 [] spawn 

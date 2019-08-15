@@ -20,7 +20,7 @@ _playerName = profileNameSteam;
 _text =
 		[
 			["Thank you for playing, ","%1",5],
-			[_playerName + "!","<t color='#D22E2E'>%1</t><br/>",15],
+			[_playerName + "!","<t color='#469CED'>%1</t><br/>",15],
 			["Hope you enjoyed!","%1",15]
 		]; 
 
