@@ -10,7 +10,8 @@ if (!isServer) exitWith {};
 // Bomb task
 [] spawn
 {
-	waitUntil {sleep 1.0; ({(_x getVariable "isDisarmed")} count [bomb_1,bomb_2,bomb_3,bomb_4] == 4)};
+	//waitUntil {sleep 1.0; ({(_x getVariable "isDisarmed")} count [bomb_1,bomb_2,bomb_3,bomb_4] == 4)};
+	waitUntil {sleep 1.0; !isNil "bombs"};
 	["bombTask", "succeeded"] call FHQ_fnc_ttSetTaskState;
 };
 
@@ -94,23 +95,26 @@ if (!isServer) exitWith {};
 	sleep 4.0;
 	//[["Overture",121]] remoteExec ["playMusic",[0,-2] select (isMultiplayer && isDedicated)];
 	
-	_extMkr = createMarker ["extMkr", (getPos ext)];
+	_extMkr = createMarker ["extMkr", (getPos extLZ)];
 	"extMkr" setMarkerText "Extraction";
 	"extMkr" setMarkerColor "ColorBlufor";
 	"extMkr" setMarkerType "hd_pickup";
 	
 	// Assign evac objective
-	[phoenix, ["extTask", "Board the inbound Pelican to extract from the area.", "Extraction", "", getMarkerPos "extMkr", "assigned"]] call FHQ_fnc_ttAddTasks;
+	[phoenix, ["extTask", "Board the inbound Falcon to extract from the area.", "Extraction", "", getMarkerPos "extMkr", "assigned"]] call FHQ_fnc_ttAddTasks;
 	sleep 3.0;
 	
 	// Command message
 	[
-		["Command","Gentlemen, it's time to pull you out of there. A Falcon is inbound to pick you up. Head to the extraction point we've marked on your map. Excellent work today, Phoenix! Command out.",15.0,"RadioAmbient2"], AD_fnc_subtitle
+		["Command","Phoenix, it's time to pull you out of there. Kilo 1-3 is inbound to pick you up. Head to the extraction point we've marked on your map. Excellent work today, Gentlemen! Command out.",15.0,"RadioAmbient2"], AD_fnc_subtitle
 	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
+	
+	// Run extraction script
+	execVM "Scripts\extract.sqf";
 };
 
 // Extracted, end mission
-[] spawn
+/* [] spawn
 {
 	waitUntil {sleep 1.0; ({(_x in extPel)} count units phoenix == {alive _x} count units phoenix)};
 	
@@ -143,7 +147,7 @@ if (!isServer) exitWith {};
 	activateKey "MissionCompleted";
 	sleep 1.0;
 	["End_Win",true,true,false] remoteExec ["BIS_fnc_endMission"];
-};
+}; */
 
 // Insertion stuff
 [] spawn

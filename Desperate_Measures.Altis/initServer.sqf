@@ -1,6 +1,7 @@
 if (!isServer) exitWith {};
 
 /******************** SERVER VARIABLES ***********************/
+altExtract = false;
 
 /******************** SERVER SCRIPTS ***********************/
 execVM "briefing.sqf";
@@ -279,13 +280,6 @@ else
 {
 	waitUntil{sleep 5.0; ({_x getVariable ["AIS_unconscious", false]} count units phoenix == {alive _x} count units phoenix)};
 	["End_AllDown",false,true,false] remoteExec ["BIS_fnc_endMission"];
-};
-
-// Constant check if extraction heli is dead
-[] spawn 
-{
-	waitUntil{sleep 5.0; !alive extPel};
-	["End_ExtractDead",false,true,false] remoteExec ["BIS_fnc_endMission"];
 };
 
 waitUntil{sleep 1.0; !isNil "BIS_fnc_init"}; // Wait until server is ready
