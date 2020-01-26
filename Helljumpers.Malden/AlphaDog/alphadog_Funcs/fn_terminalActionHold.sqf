@@ -32,7 +32,10 @@ if (_actionText == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_e
 //if (_text == "" || _textTick == "" || _textDone == "" || _textInt == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_error; false};
 
 // Set custom name in text
-_actionText = format ["<t color='#D22E2E'>%1</t>", _actionText];
+_actionText = format ["<t color='#469CED'>%1</t>", _actionText];
+
+// Track object value
+_terminal setVariable ["isTermComp", false, true];
 
 // Create hack hold action for every connected client
 [
@@ -83,7 +86,7 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _actionText];
 		
 		if (_text != "") then
 		{
-			hint parseText format ["<t size='1.5' font='PuristaBold' color='#D22E2E'>%1</t>", _text];
+			hint parseText format ["<t size='1.5' font='PuristaBold' color='#469CED'>%1</t>", _text];
 		};
 		playSound "Simulation_Fatal";
 		

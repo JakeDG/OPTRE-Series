@@ -27,7 +27,10 @@ if (!(_terminal isKindOf "Land_DataTerminal_01_F")) exitwith {["ERROR: %1 must b
 if (_text == "" || _textDL == "" || _textDone == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_error; false};
 
 // Set custom name in text
-_actionText = format ["<t color='#D22E2E'>%1</t>", _text];
+_actionText = format ["<t color='#469CED'>%1</t>", _text];
+
+// Track object value
+_terminal setVariable ["termHacked", false, true];
 
 // Add action to terminal for all players and JIPs
 [_terminal, 
@@ -56,7 +59,7 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _text];
 				_output =
 					[
 						[_textDL,"<t size='0.7' font='PuristaSemiBold' shadow='1'>%1</t>",15],
-						[_textDone,"<t color='#D22E2E' size='0.7' font='PuristaBold' shadow='1'>%1</t>",15]	
+						[_textDone,"<t color='#469CED' size='0.7' font='PuristaBold' shadow='1'>%1</t>",15]	
 					];
 					
 				[_output,-safezoneX,0.7,"<t align='center'>%1</t>"] spawn BIS_fnc_typeText;
@@ -78,6 +81,8 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _text];
 				};
 				
 				sleep 1.0;
+				
+				// Set object value to true
 				_target setVariable ["termHacked", true, true];
 			};
 		},

@@ -1,3 +1,6 @@
+// This function will force the artillery to fire at a game logic at random intervals
+// NOTE: Will be called on server!!!
+
 /*
     Filename: fn_clientLoaded.sqf
     Author: AlphaDog
@@ -44,7 +47,7 @@ if (_artyType == "B_MBT_01_mlrs_F" || _artyType == "I_Truck_02_MRL_F") then
 		
 		sleep 10.0;
 		
-		while {alive _artillery} do
+		while {alive _artillery && alive gunner _artillery} do
 		{
 			_shots = floor(random 8);
 			_artillery commandArtilleryFire [_pos, "12Rnd_230mm_rockets", _shots];
@@ -63,7 +66,7 @@ else // Normal artillery
 		
 		sleep 10.0;
 		
-		while {alive _artillery} do 
+		while {alive _artillery && alive gunner _artillery} do 
 		{
 			_logic action ["useWeapon", _artillery, gunner _artillery, 1]; // Force artillery to fire
 			sleep 1.0;

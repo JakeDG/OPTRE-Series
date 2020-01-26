@@ -1,4 +1,5 @@
 // Create a fire or smoke effect, of given size, at specified location - Created by BIS - Modified by AlphaDog789
+if (!isServer) exitwith {};
 
 private["_effect","_pos","_fire","_smoke"];
 private["_light","_brightness","_color","_ambient","_intensity","_attenuation"];
@@ -39,7 +40,7 @@ switch (_effect) do
 		
 	case "FIRE_VBIG" : 
 	{
-		"test_EmptyObjectForFireBig" createVehicleLocal _pos;
+		"test_EmptyObjectForFireBig" createVehicle _pos;
 		_brightness	= 1.0;
 		_intensity	= 10000;
 		_attenuation	= [0,0,0,1.6];
@@ -62,18 +63,18 @@ switch (_effect) do
 	
 	case "SMOKE_VBIG" : 
 	{
-		"test_EmptyObjectForSmoke" createVehicleLocal _pos;
+		"test_EmptyObjectForSmoke" createVehicle _pos;
 	};
 };
 
 if (_fire != "") then {
-	_eFire = "#particlesource" createVehicleLocal _pos;
+	_eFire = "#particlesource" createVehicle _pos;
 	_eFire setParticleClass _fire;
 	_eFire setPosATL _pos;
 };
 
 if (_smoke != "") then {
-	_eSmoke = "#particlesource" createVehicleLocal _pos;
+	_eSmoke = "#particlesource" createVehicle _pos;
 	_eSmoke setParticleClass _smoke;
 	_eSmoke setPosATL _pos;
 };

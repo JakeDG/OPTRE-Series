@@ -5,6 +5,7 @@ if (!isServer) exitWith {};
 /******************** SERVER SCRIPTS ***********************/
 execVM "briefing.sqf";
 execVM "Scripts\serverTaskTrack.sqf";
+execVM "Scripts\dropPodFix.sqf";
 
 /******************** REMOTE EXECS ***********************/
 // Add action to ammoboxes

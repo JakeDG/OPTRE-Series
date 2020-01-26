@@ -26,7 +26,7 @@ if (isNull _obj) exitwith {["ERROR: Oject does not exist!"] call BIS_fnc_error; 
 if (_text == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_error; false};
 
 // Set custom name in text
-_actionText = format ["<t color='#D22E2E'>%1</t>", _text];
+_actionText = format ["<t color='#469CED'>%1</t>", _text];
 
 // Track object value
 _obj setVariable ["isPickPut_H", false, true];

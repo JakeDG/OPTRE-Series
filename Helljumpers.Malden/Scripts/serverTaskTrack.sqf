@@ -12,17 +12,30 @@ if (!isServer) exitWith {};
 	if (!isMultiplayer && savingEnabled) then {saveGame;};
 	sleep 1.0;
 	
-	// HQ message
-	[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#469CED'>Command:</t> Good job clearing the beach, Phoenix! Now push up with the Marines and take the old UNSC base to the southwest.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// Command message
+	[
+		[
+			"Command",
+			"Good job clearing the beach, Phoenix! Now push up with the Marines and take the old UNSC base to the southwest.",
+			10,
+			"RadioAmbient2"
+		], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 6.0;
 	
 	// Assign base parent task
 	[phoenix, [["baseTasks", "primTasks"], "<font color='#469CED'>Clear the way</font> for the UNSC 5th Fleet by securing the <marker name='baseMkr'>old UNSC base</marker> that's southwest of the <marker name='beachMkr'>beach</marker>", "Secure Old UNSC Base", "", getMarkerPos "baseMkr", "assigned", "ATTACK"]] call FHQ_fnc_ttAddTasks;
 	sleep 6.0;
 	
-	[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#469CED'>Command:</t> Disable the orbital defense guns and destroy any anti-air systems that are still active in the base. Make sure to also secure the base's command tower. Let the Marines deal with the rest of the fodder.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 15, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// Command message
+	[
+		[
+			"Command",
+			"Disable the orbital defense guns and destroy any anti-air systems that are still active in the base. Make sure to also secure the base's command tower. Let the Marines deal with the rest of the fodder.",
+			10,
+			"RadioAmbient8"
+		], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 3.0;
 	
 	// Create clear tower task
@@ -55,8 +68,8 @@ if (!isServer) exitWith {};
 	_orbGunTerm2 = selectRandom [term_2a,term_2b,term_2c,term_2d];
 	
 	// Add the "Disable" action to the selected terminals
-	[_orbGunTerm1, "Disable Orbital Gun", "Disabling Gun", "Gun Disabled", "Interrupted"] call AD_fnc_hack;
-	[_orbGunTerm2, "Disable Orbital Gun", "Disabling Gun", "Gun Disabled", "Interrupted"] call AD_fnc_hack;
+	[_orbGunTerm1, "Disable Orbital Gun", 10, "Disabling Orbital Gun", "Orbital Gun Disabled", "Interrupted"] call AD_fnc_hack;
+	[_orbGunTerm2, "Disable Orbital Gun", 10, "Disabling Orbital Gun", "Orbital Gun Disabled", "Interrupted"] call AD_fnc_hack;
 	
 	// Orbital Gun Task
 	[_orbGunTerm1,_orbGunTerm2] spawn 
@@ -69,8 +82,15 @@ if (!isServer) exitWith {};
 	};
 	sleep 7.0;
 	
-	[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-	["<t size='0.6'><t color='#469CED'>Command:</t> Phoenix, be sure to signal the Marines when you are ready for them to move in on the base. Command out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 15, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+	// Command message
+	[
+		[
+			"Command",
+			"Phoenix, be sure to signal the Marines when you are ready for them to move in on the base. Command out.",
+			8,
+			"RadioAmbient6"
+		], AD_fnc_subtitle
+	] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	sleep 3.0;
 	
 	// Add support item
@@ -81,10 +101,19 @@ if (!isServer) exitWith {};
 	[] spawn
 	{
 		waitUntil {sleep 1.0; !isNil "marinesGo"};
-		[["RadioAmbient2"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#469CED'>Marine:</t> Copy that, Phoenix. We're moving in now. Out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 15, 0.25, 0, 199] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+		
+		// Marine message
+		[
+			[
+				"Marine",
+				"Copy that, Phoenix. We're moving in now. Out.",
+				10,
+				"RadioAmbient2"
+			], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 	};
 	
+	// Marine support hint
 	parseText format ["<t color='#FFFFFF' size='3'>The Marines are standing by!</t><br/><t color='#469CED' size='1.3'>When you are ready, signal them to assault the base!</t>"] remoteExec ["hint", [0,-2] select (isMultiplayer && isDedicated)];
 	
 	// Change terminal color when gun deactivated
@@ -119,9 +148,15 @@ if (!isServer) exitWith {};
 		if (!isMultiplayer && savingEnabled) then {saveGame;};
 		sleep 2.0;
 
-		// HQ message
-		[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#469CED'>Command:</t> All callsigns be advised, we are detecting hostile forces converging on your position from multiple directions that we've marked on your maps. Recommend you dig in.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+		// Command message
+		[
+			[
+				"Command",
+				"All callsigns be advised, we are detecting hostile forces converging on your position from multiple directions that we've marked on your maps. Recommend you dig in.",
+				10,
+				"RadioAmbient6"
+			], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 		
 		// Create markers
 		_baseAttMkr1 = createMarker ["baseAttackMkr1", [6884.41,10249.2]]; 
@@ -147,15 +182,22 @@ if (!isServer) exitWith {};
 		// Commence base assault
 		execVM "Scripts\baseAttack.sqf";
 		sleep 12.0;
-		
-		// Command message 
-		[["RadioAmbient8"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-		["<t size='0.6'><t color='#469CED'>Command:</t> The fleet is mobile and en route to your position. ETA 5 mikes. Hold the area until we get there!</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+
+		// Command message
+		[
+			[
+				"Command",
+				"The fleet is mobile and en route to your position. ETA 5 mikes. Hold the area until we get there!",
+				10,
+				"RadioAmbient8"
+			], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 		
 		// Assign base defense task
 		[phoenix, [["defendTask", "primTasks"], "<font color='#469CED'>Defend</font> the <marker name='baseMkr'>abandoned UNSC base</marker> from a large <font color='#469CED'>insurgent counterattack</font>.", "Defend the Base", "", getMarkerPos "baseMkr", "assigned", "DEFEND"]] call FHQ_fnc_ttAddTasks;
 		
-		sleep random [400, 425, 450]; // Wait about 6 minutes
+		// Fleet arrival time to base
+		sleep random [285, 300, 315]; // Wait about 5 minutes
 		
 		// Delete the music event handler
 		if (("Music" call BIS_fnc_getParamValue) == 1) then 
@@ -182,66 +224,3 @@ if (!isServer) exitWith {};
 		execVM "Scripts\fleetForce.sqf";
 	};
 };
-
-// Fixes the problem where the drop pods get stuck underground when it lands
-[] spawn 
-{
-	// Wait until at least one member of phoenix team is on the ground
-	//waitUntil {sleep 1.0; {istouchingGround (objectParent _x)} count units phoenix > 0};
-	waitUntil {sleep 1.0; !isNil "introDone" && ({getPosATL objectParent _x select 2 < 2} count units phoenix > 0)};
-	
-	// Wait a little bit for everyone to land
-	{
-		[_x] spawn 
-		{
-			_unit = _this select 0;
-			sleep 10.0;
-			
-			// Check if unit Z axis position is negative
-			if (((getPosATL _unit) select 2) < -0.1) then 
-			{
-				(objectParent _unit) setPosATL [(getPosATL _unit) select 0, (getPosATL _unit) select 1, 0];
-				sleep 1.0;
-				unassignVehicle _unit;
-				sleep 0.25;
-				
-				// Kick AI out of pod fix (v1.02)
-				if (!isPlayer _unit) then 
-				{
-					_unit action ["getOut",  (objectParent _unit)];
-				};
-			};
-			sleep 6.0;
-			
-			// Check if unit is AI and stuck in pod for some reason
-			if (((typeOf objectParent _unit) == "OPTRE_HEV") && !isPlayer _unit) then
-			{
-				unassignVehicle _unit;
-				sleep 1.0;
-				_unit setPosATL [((getPosATL _unit) select 0) - 5, (getPosATL _unit) select 1, 0];
-				
-				// Damage is disabled in the pods so it will be deactivated once the AI are teleported out
-				if (isDamageAllowed _unit) then 
-				{
-					[_unit, true] remoteExec ["allowDamage", groupOwner phoenix];
-					
-					// Add event handler to unit just in case locality changes (Needs further testing)
-					_unit addEventHandler [
-											"Local", 
-											{
-												params ["_entity", "_isLocal"];
-												
-												_entity = _this select 0;
-												_isLocal = _this select 1;
-												
-												if (_isLocal) then 
-												{ 
-													_entity allowDamage false; 
-												};
-											}	
-										];
-				}
-			};
-		};
-	} forEach units phoenix;
-}

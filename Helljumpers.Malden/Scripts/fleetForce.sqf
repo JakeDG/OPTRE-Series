@@ -13,10 +13,10 @@ sleep 0.5;
 
 // Set waypoints
 _pel1Wp1 = (_pel1 select 2) addWaypoint [(getMarkerPos "pel1WpMkr"), 0]; // Pelican 1 waypoints
-_pel1Wp1 setWaypointType "SAD";
+_pel1Wp1 setWaypointType "HOLD";
 
 _pel2Wp1 = (_pel2 select 2) addWaypoint [(getMarkerPos "pel2WpMkr"), 0]; // Pelican 2 waypoints
-_pel2Wp1 setWaypointType "SAD";
+_pel2Wp1 setWaypointType "HOLD";
 
 // Create frigates -- Frigates removed in OPTRE v0.20
 /*
@@ -105,9 +105,15 @@ sleep 3.0;
 ["primTasks", "succeeded"] call FHQ_fnc_ttSetTaskState;
 sleep 3.0;
 
-// HQ message
-[["RadioAmbient6"],AD_fnc_soundAmp] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
-["<t size='0.6'><t color='#469CED'>Command:</t> Gentlemen, sorry we're late. Excellent job holding the base. We'll take it from here. Command out.</t>", safeZoneX+0.45, safeZoneY+safeZoneH-0.3, 10, 0.25, 0, 198] remoteExec ["BIS_fnc_dynamicText", [0,-2] select (isMultiplayer && isDedicated)];
+// Command message
+		[
+			[
+				"Command",
+				"Gentlemen, sorry we're late. Excellent job holding the base. We'll take it from here. Command out.",
+				10,
+				"RadioAmbient6"
+			], AD_fnc_subtitle
+		] remoteExec ["call", [0,-2] select (isMultiplayer && isDedicated)];
 sleep 12.0;
 
 [] remoteExec ["AD_fnc_thanks", [0,-2] select (isMultiplayer && isDedicated)];

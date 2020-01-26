@@ -21,7 +21,7 @@ Mission Version: 1.0
 	v1.01 - Fixed an issue with the Marine assault support item not being assigned to the squad leader in a dedicated server. 
 	
 	v1.02 - Added another method to fix the AI not getting out of the pods when they land
-	
+
 	v1.03 
 		- Changed how the fix to force the AI out of the pods works so that it functions better on a dedicated server
 		- Stopped the intro Halo Theme from being interrupted during the drop on dedicated servers
@@ -43,7 +43,16 @@ Mission Version: 1.0
 	v1.05
 		- Added back the M41 rocket launcher to all AT units including Phoenix team's AT rifleman after the patch for OPTRE
 		- Changed how the intro text was displayed
-		
+	
+	v1.06
+		- Fixed player rating decreasing when destroying the anti-air emplacements, which caused friendlies to turn on them
+		- Added my updated functions library
+		- Added back the orbital guns on top of the bunkers
+		- Changed subtitles to use my subtitle functions
+		- Reduced AIS stabilize time to 10 seconds
+		- Reduced AIS revive time to 20 seconds
+		- Reduced fleet response time to about 5 minutes
+		- Moved code that fixes drop pod landing problems to its own script
 	
 *********************************************************************************************************************************
 

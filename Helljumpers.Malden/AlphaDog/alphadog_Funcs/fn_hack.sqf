@@ -9,20 +9,27 @@
     Parameter(s):
     0: Object - The object to have the action applied to it.
     1: String - Custom action name.
-    2: (Optional) String - Text displayed while doing the action.
-    3: (Optional) String - Text displayed when action is done.
-    4: (Optional) String - Text displayed when action is interrupted.
-    5: (Optional) Number - Time it takes to hack - default: 10 seconds
+    2: (Optional) Number - Time it takes to hack
+    3: (Optional) String - Text displayed while doing the action.
+    4: (Optional) String - Text displayed when action is done.
+    5: (Optional) String - Text displayed when action is interrupted.
    
    Example:
-   [object, "Some Custom Name", "downloading", "finished", "interrupted", 12] call AD_fnc_hack;
+   [object, "Some Custom Name", 12, "downloading", "finished", "interrupted"] call AD_fnc_hack;
 */
 
 if (!isServer) exitwith {};
 
 private ["_obj", "_actionText", "_textTick", "_textDone", "_textInt", "_actionTime"];
 
-params [["_obj", objNull, [objNull], 1], ["_actionText", "", [""], 1], ["_textTick", "", [""], 1], ["_textDone", "", [""], 1], ["_textInt", "", [""], 1], ["_actionTime", 10, [999], [0,1]]];
+params [
+		["_obj", objNull, [objNull], 1], 
+		["_actionText", "", [""], 1], 
+		["_actionTime", 10, [999], [0,1]], 
+		["_textTick", "", [""], 1], 
+		["_textDone", "", [""], 1], 
+		["_textInt", "", [""], 1]
+	];
 	
 if (isNull _obj) exitwith {["ERROR: Oject does not exist!"] call BIS_fnc_error; false};
 if (_actionText == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_error; false};
@@ -31,7 +38,7 @@ if (_actionText == "") exitwith {["ERROR: Action text is empty!"] call BIS_fnc_e
 _obj setVariable ["isHacked", false, true];
 
 // Set custom name in text
-_actionText = format ["<t color='#D22E2E'>%1</t>", _actionText];
+_actionText = format ["<t color='#469CED'>%1</t>", _actionText];
 
 // Create hack hold action for every connected client
 [
@@ -76,7 +83,7 @@ _actionText = format ["<t color='#D22E2E'>%1</t>", _actionText];
 		
 		if (_text != "") then
 		{
-			hint parseText format ["<t size='1.5' font='PuristaBold' color='#D22E2E'>%1</t>", _text];
+			hint parseText format ["<t size='1.5' font='PuristaBold' color='#469CED'>%1</t>", _text];
 		};
 		playSound "Simulation_Fatal";
 	},                                                                 
